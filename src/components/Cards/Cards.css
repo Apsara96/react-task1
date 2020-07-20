@@ -1,0 +1,33 @@
+.Card {
+    width: 250px;
+    padding: 16px;
+    text-align: center;
+    border: 1px solid black;
+    box-shadow: 0 2px 3px #ccc;
+    margin: 10px;
+    height: 150px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: lightblue;
+}
+
+.Card:hover,
+.Card:active {
+    background-color: #80b6e2;
+}
+
+.container{
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        justify-content: center;
+        width: 100%;
+        margin: auto;
+        height: 180px;
+        background-color: lavenderblush;
+}
+
+.Id {
+    margin: 16px 0;
+    color: #ccc;
+}

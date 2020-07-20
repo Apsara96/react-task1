@@ -1,0 +1,24 @@
+.Cards {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    height:200px;
+}
+
+.Text{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.CardDetails {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    text-align: center;
+}
+
+
+
