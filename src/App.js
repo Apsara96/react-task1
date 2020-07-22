@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Login from './containers/Login/Login';
 import Welcome from './containers/Welcome/Welcome';
-import DisplayTable from './containers/DisplayTable/DisplayTable';
+// import DisplayTable from './containers/DisplayTable/DisplayTable';
 
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Login} />
           <Route path="/welcomepage" component={Welcome} />
-          <Route path="/displaytable" component={DisplayTable} />
+          {/* <Route path="/displaytable" component={DisplayTable} /> */}
         </Switch>
       </div>
     );
