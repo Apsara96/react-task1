@@ -10,7 +10,7 @@ const Cards = (props) => {
     <div>
       <Container className={classes.container}>
         <Row>
-            <Card className={classes.Card} onClick= {() =>{props.clicked(props.id, props.title, props.body)}}>
+            <Card className={classes.Card} onClick={() =>{props.clicked(props.id, props.title, props.body)}}>
               <CardBody>
                 <CardTitle>{props.id}</CardTitle>
                 <CardSubtitle>{props.title}</CardSubtitle>

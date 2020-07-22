@@ -28,12 +28,12 @@ class Welcome extends Component {
     }
 
     showMoreHandler = () => {
-        this.props.history.replace('/DisplayTable');
+        this.props.history.replace('/displaytable'); 
     }
 
     clickCardHandler = (id, title, body) => {
         // console.log(body)
-        this.setState = ({
+        this.setState({
             id : id,
             title :title,
             body :body
@@ -52,7 +52,7 @@ class Welcome extends Component {
         })
         
         return (
-            <div>
+            <div> 
                 <div className={classes.Text}>
                     <h2 text='center'>Welcome Admin</h2>
                 </div>
@@ -64,6 +64,7 @@ class Welcome extends Component {
                 </div>
                 <div>
                     {/* <CardDetails id={this.state.selectedCardId}/> */}
+                    {/* {console.log(this.state)} */}
                 <div className={classes.CardDetails}>
                     <h3>Card Details</h3>
                 <div className="col-md-6"> 
@@ -72,11 +73,11 @@ class Welcome extends Component {
                 </div>
                 <div>
                     <label>Title</label>
-                    <input type="textarea" value={this.state.title} />
+                    <textarea type="textarea" value={this.state.title} />
                 </div>
                 <div>
-                    <label>Content</label>
-                    <input type="textarea" value={this.state.body}/>
+                    <label>Content</label>  
+                    <textarea type="textarea" value={this.state.body}/>
                 </div>
                 </div>
                 </div>

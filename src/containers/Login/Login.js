@@ -8,8 +8,8 @@ import '../Welcome/Welcome';
 class Login extends Component{ 
 
   state = { 
-    User:"Admin",
-    Pass_word:"123",
+    user:"Admin",
+    pass_word:"123",
     username: '',
     password: ''
   }
@@ -18,12 +18,12 @@ class Login extends Component{
       this.setState({
         [event.target.name]:event.target.value
       });
-
+  
   }
   
   loginHandler = () => {
-    if(this.state.password === this.state.Pass_word){
-      this.props.history.push("./WelcomePage")
+    if(this.state.password === this.state.pass_word){
+      this.props.history.push("./welcomepage")
     }else{
       alert("Invalid User")
     }
