@@ -1,38 +1,42 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import { connect } from 'react-redux';
 // import { Route } from 'react-router-dom';
 
 import classes from './Welcome.css';
 import Cards from '../../components/Cards/Cards';
-import {Table} from 'reactstrap'
+import {Table} from 'reactstrap';
+import * as welcomeActions from '../../store/actions/index';
 // import DisplayTable from '../../components/DisplayTable/DisplayTable';
 
 
 class Welcome extends Component {
     state = {
-        cards: [],
-        posts: [],
-        showTable: true
+        // cards: [],
+        // posts: [],
+        showTable: true     
     }
+    
     componentDidMount (){
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response => {
-                const cards = response.data.slice(0,4);
-                const posts = response.data.slice(5,10)
-                const updatedCards = cards.map(card => {
-                    return{
-                        ...card
-                    }
-                })
+        this.props.onInitData();
+    //     axios.get('https://jsonplaceholder.typicode.com/posts')
+    //         .then(response => {
+    //             const cards = response.data.slice(0,4);
+    //             const posts = response.data.slice(4,10)
+    //             const updatedCards = cards.map(card => {
+    //                 return{
+    //                     ...card
+    //                 }
+    //             })
 
-                const updatedPosts = posts.map(post => {
-                    return{
-                        ...post
-                    }
-                })
-                this.setState({cards: updatedCards});
-                this.setState({posts: updatedPosts});  
-            });
+    //             const updatedPosts = posts.map(post => {
+    //                 return{
+    //                     ...post
+    //                 }
+    //             })
+    //             this.setState({cards: updatedCards});
+    //             this.setState({posts: updatedPosts});  
+    //         });
     }
 
     showMoreHandler = () => {
@@ -50,9 +54,9 @@ class Welcome extends Component {
             })
         }
     
-
+    
     render () {
-        const cards = this.state.cards.map(card => {
+        const cards = this.props.crd.map(card => {
             return <Cards 
             key={card.id} 
             title={card.title} 
@@ -60,23 +64,25 @@ class Welcome extends Component {
             body={card.body}
             clicked={this.clickCardHandler}/>
             
-        })
-        const posts = this.state.posts.map(post =>{
+        }) 
+        const posts = this.props.pst.map(post =>{
             return <tr key={post.id}>
             <td className={classes.td}>{post.id}</td>
             <td className={classes.td}>{post.title}</td>
             <td className={classes.td}>{post.body}</td>
           </tr> 
         })
-        
+        console.log("*")
+        console.log(this.props.crd)
         return (
             <div> 
-                <div className={classes.Text}>
+                <div className={classes.Text}> 
                     <h2 text='center'>Welcome Admin</h2>
                 </div>
                 <div className={classes.Cards}>
                     {cards}
                 </div>
+                
                 {this.state.showTable===true ?
                     <div className={classes.Text}>
                     <button onClick={this.showMoreHandler}>Show More</button>
@@ -125,4 +131,18 @@ class Welcome extends Component {
     }
 }
 
-export default Welcome;
+const mapStateToProps = state => {
+
+    return{
+        crd: state.wel.cards,
+        pst: state.wel.posts
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return{
+        onInitData: (  ) => dispatch(welcomeActions.initData())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);
